@@ -1,7 +1,3 @@
-provider "aws" {
-    region                  = var.aws_region
-}
-
 terraform {
   cloud {
     organization = "ss027n4-home"
@@ -12,12 +8,26 @@ terraform {
   }
 }
 
+provider "aws" {
+    region                  = var.aws_region
+    assume_role {
+      role_arn = "arn:aws:iam::639911800546:role/terraform-cloud-role"
+    }
+
+    default_tags {
+        tags = {
+            region = "${var.aws_region}"
+            project = "${local.project_name}"
+        }
+    }
+}
+
 ## DATA SOURCES
 data "aws_subnet" "aza" {
     vpc_id  = local.vpc_id
     filter {
         name    = "availabilityZone"
-        values  = ["us-east-1a"]
+        values  = ["${var.aws_region}a"]
     }
 }
 
@@ -25,7 +35,7 @@ data "aws_subnet" "azb" {
     vpc_id  = local.vpc_id
     filter {
         name    = "availabilityZone"
-        values  = ["us-east-1b"]
+        values  = ["${var.aws_region}b"]
     }
 }
 
