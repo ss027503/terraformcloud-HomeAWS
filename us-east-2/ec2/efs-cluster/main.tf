@@ -17,7 +17,7 @@ data "aws_subnet" "aza" {
     vpc_id  = local.vpc_id
     filter {
         name    = "availabilityZone"
-        values  = ["us-east-1a"]
+        values  = ["${var.aws_region}a"]
     }
 }
 
@@ -25,7 +25,7 @@ data "aws_subnet" "azb" {
     vpc_id  = local.vpc_id
     filter {
         name    = "availabilityZone"
-        values  = ["us-east-1b"]
+        values  = ["${var.aws_region}b"]
     }
 }
 
