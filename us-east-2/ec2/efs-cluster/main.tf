@@ -7,7 +7,6 @@ terraform {
     organization = "ss027n4-home"
 
     workspaces {
-      Name = "efs-cluster"
       tags = ["us-east-2", "ec2", "efs"]
     }
   }
@@ -30,15 +29,16 @@ data "aws_subnet" "azb" {
     }
 }
 
-data "aws_ami" "win2019" {
+# Get latest Ubuntu 18.04 AMI for bastion host
+data "aws_ami" "ubuntu_latest" {
     most_recent         = true
     filter {
         name            = "name"
-        values          = ["Windows_Server-2016-English-Full-Base-*"]
+        values          = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
     }
     filter {
         name            = "virtualization-type"
         values          = ["hvm"]
     }
-    owners              = ["amazon"]
+    owners              = ["099720109477"]
 }

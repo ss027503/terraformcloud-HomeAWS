@@ -20,7 +20,7 @@ module "test_cluster" {
   instance_count         = 2
   placement_group        = aws_placement_group.this.id
 
-  ami                    = data.aws_ami.win2019.id
+  ami                    = data.aws_ami.ubuntu_latest.id
   instance_type          = local.instance_type
   key_name               = local.instance_key
   monitoring             = false
