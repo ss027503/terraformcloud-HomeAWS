@@ -14,7 +14,7 @@ resource "aws_placement_group" "this" {
 
 module "test_cluster" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
-  version                = "~> 3.0"
+  version                = "~> 2.0"
 
   name                   = "${local.project_name}-cluster"
   instance_count         = 2
