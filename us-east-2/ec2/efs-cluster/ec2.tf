@@ -14,7 +14,7 @@ resource "aws_placement_group" "this" {
 
 module "test_cluster" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
-  version                = "~> 2.0"
+  version                = "~> 3.0"
 
   name                   = "${local.project_name}-cluster"
   instance_count         = 2
@@ -24,7 +24,7 @@ module "test_cluster" {
   instance_type          = local.instance_type
   key_name               = local.instance_key
   monitoring             = false
-  vpc_security_group_ids = [module.instance_security_group.this_security_group_id]
+  vpc_security_group_ids = [module.instance_security_group.security_group_id]
   subnet_ids             = [data.aws_subnet.aza.id, data.aws_subnet.azb.id]
 
   user_data = <<-EOF
@@ -49,6 +49,7 @@ module "test_cluster" {
 
 module "instance_security_group" {
   source = "terraform-aws-modules/security-group/aws"
+  version                = "~> 4.0"
 
   name        = "${local.project_name}-sg"
   description = "Security group for ${local.project_name}"
