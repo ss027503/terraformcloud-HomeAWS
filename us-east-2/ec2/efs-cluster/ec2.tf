@@ -4,7 +4,7 @@ locals {
   
   instance_type       = "t3.micro"
   instance_disk_size  = 10
-  instance_key        = "icestationzebra"
+  instance_key        = "home-use2"
 }
 
 resource "aws_placement_group" "this" {
