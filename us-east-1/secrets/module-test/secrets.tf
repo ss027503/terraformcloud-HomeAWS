@@ -1,3 +1,7 @@
+locals {
+    project_name = "module-test"
+}
+
 module gen_secret {
     source = "https://github.com/ss027503/terraform-modules/aws/gen-secret"
 
