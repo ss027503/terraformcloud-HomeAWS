@@ -1,5 +1,6 @@
 locals {
     project_name = "module-test"
+    something = "here"
 }
 
 module gen_secret {
