@@ -3,7 +3,7 @@ terraform {
     organization = "ss027n4-home"
 
     workspaces {
-      tags = ["us-east-2", "ec2"]
+      name = "aws-gaming"
     }
   }
 }

@@ -4,7 +4,7 @@ locals {
 }
 
 module gen_secret {
-    source = "git@github.com:ss027503/terraform-modules/aws/gen-secret"
+    source = "git::ssh://github.com:ss027503/terraform-modules/aws/gen-secret"
 
     secret_name = "some-test-secret"
     length = 18
